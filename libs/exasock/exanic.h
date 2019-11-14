@@ -62,4 +62,7 @@ ssize_t exanic_tcp_send_iov(struct exa_socket * restrict sock,
 ssize_t exanic_tcp_build_hdr(struct exa_socket * restrict sock, void *buf,
                              size_t len, bool *conn_closed);
 
+/* bpn extensions */
+void *exanic_get_tx(struct exa_socket * restrict sock);
+
 #endif /* EXASOCK_EXANIC_H */

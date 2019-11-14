@@ -1692,3 +1692,13 @@ exanic_tcp_build_hdr(struct exa_socket * restrict sock, void *buf,
     /* Return the actual size of the header */
     return hdr_len;
 }
+
+/* bpn extensions */
+void *
+exanic_get_tx(struct exa_socket * restrict sock)
+{
+    struct exanic_ip *ctx = NULL;
+    if (SOCK_DGRAM == sock->type) ctx = sock->ctx.udp->exanic_ctx;
+    if (SOCK_STREAM == sock->type) ctx = sock->ctx.tcp->exanic_ctx;
+    return ctx ? ctx->exanic_tx : NULL;
+}
